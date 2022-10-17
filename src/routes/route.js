@@ -8,36 +8,99 @@ router.get('/test-me', function (req, res) {
     res.send('My second ever api!')
 });
 
-router.get('/students', function (req, res){
+
+router.get('/moives', function (req, res){
+    
+
     console.log("The path params in the request are : ", req.params)
-    let students = ['Sabiha', 'Neha', 'Akash']
-    res.send(students)
+    let moives = ['Rang de basanti', 'The shining', 'Lord of the rings','Batman begins']
+    res.send(moives)
+})
+router.get('/movies/:index', function(req, res){
+
+    console.log("list of movies ." , req.params)
+
+    let  list_of_movies = ['Rang de basanti' , 'The shining' , 'Lord of the rings' ,'batman begins']
+    let  indexresult = req.params.index
+    res.send(list_of_movies[indexresult])
 })
 
-
 // Example 1 for path params
-router.get('/students/:studentName', function(req, res){
-    // ':' denotes that the following part of route is a variable
-    // The value of this variable is what we are sending in the request url after /students
-    // This value is set in the form of an object inside req.params
-    // The object contain key value pairs
-    // key is the variable in the route
-    // value is whatever dynamic value sent in the request url
+
+
+router.get('/moives/:movies name', function(req, res){
+    
     let myParams = req.params
 
-    // params attribute is fixed in a request object
-    // params contains the path parameters object
+    
     console.log("The path params in the request are : ", myParams)
-    res.send('The full name is ' + myParams.studentName )
+    
+    res.send('The full name is ' + myParams['moives name'] )
 })
 
 // Example 2 for path params
-router.get('/student-details/:name', function(req, res){
+
+
+router.get('/moives-details:name', function(req, res){
     let requestParams = req.params
     console.log("This is the request ", requestParams)
-    let studentName = requestParams.name
-    console.log('Name of the student is ', studentName)
+    let moivesname = requestParams.name
+    console.log('Name of the movie is ', moivesname)
     res.send('Dummy response')
 })
 
 module.exports = router;
+
+router.get('/movies/ekta/:index', function(req, res){
+
+    const  list_of_movies = ["Rang de basanti" , "The shining", "Lord of the rings" , "Batman begins"]
+     const index = req.params 
+
+     
+     let singh = Object.values(index)
+    if(singh >=  list_of_movies.length){
+        res.send("valad number ")
+} else res.send(list_of_movies[singh])
+    
+})
+router.get('/movies_object', function(req, res){
+    console.log("list of movies." , req.params)
+    const  list_of_movies_object = [ 
+       { "id": 1,"name": "The Shining"}, {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }
+    ]
+       
+       
+    res.send(list_of_movies_object)
+})
+router.get('/movies_object/yash/:index', function(req, res){
+
+    const  list_of_movies_object = [ 
+        { "id": 1,"name": "The Shining"}, {
+         "id": 2,
+         "name": "Incendies"
+        }, {
+         "id": 3,
+         "name": "Rang de Basanti"
+        }, {
+         "id": 4,
+         "name": "Finding Nemo"
+        }
+     ]
+     const index = req.params 
+
+     
+     let singhh = Object.values(index)
+    if(singhh >=  list_of_movies_object.length){
+        res.send("valad number ")
+} else res.send(list_of_movies_object[--singhh])
+    
+})
