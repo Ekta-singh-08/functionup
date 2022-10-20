@@ -16,6 +16,7 @@ router.get("/test-api" , function(req, res) {
     res.send("hi FunctionUp")
 })
 
+module.exports = router
 
 router.get("/test-api-2" , function(req, res) {
     res.send("hi FunctionUp. This is another cool API")
@@ -144,6 +145,60 @@ router.post( "/post-query-1", function (req, res){
     console.log( data)
     res.send( {data: data , status: true})
 })
+//const express = require('express');
+//const router = express.Router();
+
+let persons= [
+    {
+    name: "PK",
+    age: 10,
+    votingStatus: false
+ },
+ {
+    name: "SK",
+    age: 20,
+    votingStatus: false
+ },
+ {
+    name: "AA",
+    age: 70,
+    votingStatus: false
+ },
+ {
+    name: "SC",
+    age: 5,
+    votingStatus: false
+ },
+ {
+    name: "HO",
+    age: 40,
+    votingStatus: false
+ }
+ ]
+ 
+let ektasingh = []
+let kaka = []
+ router.get( "/ektasingh", function (req, res){
+    
+   // let voteage = Data.my
+    let validage = persons.filter(e=>e.age >= 18)
+    
+    ektasingh.push(validage)
+
+    /*for (let i = 0; i < ektasingh[0].length; i++) {
+        let data = ektasingh[0][i];
+
+        data.votingStatus = true
+        kaka.push(ektasingh)
+    }
+    res.send(kaka[0][0])
+    console.log(kaka[0][0])*/
+    console.log (ektasingh)
+res.send({data:ektasingh})
+   
+})
+
+module.exports = router;
 
 //filter out all the numbers that are greater than "input" ( input is received from query params)
 let myArr = [23, 45, 67, 281394, 32424, 423, 24, 42323, 4, 234, 12, 34]
@@ -157,6 +212,20 @@ router.post( "/post-query-2", function (req, res){
         if ( myArr[i] > input )     finalArr.push( myArr[i])
     }
     res.send( {data: finalArr , status: true})
+})
+router.post('/person',function(req,res){
+    let query =req.body.persons
+    let body=req.query.votingAge
+    let arr=[]
+    for(let i=0;i<query.length;i++)
+    {
+        if(query[i].age>body)
+        {
+            query[i].votingAge=true
+            arr.push(query[i])
+        }
+    }
+    res.send({data:arr})
 })
 
 
