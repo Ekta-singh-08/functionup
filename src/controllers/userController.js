@@ -6,6 +6,11 @@ const createUser= async function (req, res) {
     res.send({msg: savedData})
 }
 
+//const creat book collection = async function (req, res)
+
+
+
+
 const getUsersData= async function (req, res) {
     let allUsers= await UserModel.find()
     res.send({msg: allUsers})
