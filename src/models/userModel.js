@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema( {
     firstName: String,
@@ -28,4 +28,17 @@ module.exports = mongoose.model('User', userSchema) //users
 
 
 // String, Number
-// Boolean, Object/json, array
+// Boolean, Object/json, array*/
+
+const mongoose = require('mongoose');
+
+const AuthorsSchema = new mongoose.Schema( {
+    author_id:{
+            type: Number ,
+            require:true },
+    author_name:String,
+    age:Number,
+    address: String
+});
+
+module.exports = mongoose.model('author', AuthorsSchema)
