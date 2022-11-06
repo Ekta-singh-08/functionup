@@ -1,4 +1,4 @@
-const authenticate = function(req, req, next) {
+const authenticate = function(req, res, next) {
     //check the token in request header
     //validate this token
 
