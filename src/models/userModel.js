@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const newuser = new mongoose.Schema( {
+const newuserSchema = new mongoose.Schema( {
 	
 		
 	
@@ -25,7 +25,7 @@ const newuser = new mongoose.Schema( {
  
 },{ timestamps: true });
 
-module.exports = mongoose.model('usersig', newuser)
+module.exports = mongoose.model('userdata', newuserSchema)
 
 
 
